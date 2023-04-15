@@ -62,6 +62,7 @@ public class ToDoList
         }
     }
 }
+```
 
 **Exemplo de conta-regra:**
 
@@ -93,7 +94,7 @@ public class toDo_list
         }
     }
 }
-
+```
 
 ### 2.2. Parâmetros e Variáveis
 
