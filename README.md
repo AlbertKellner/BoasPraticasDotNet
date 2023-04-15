@@ -32,6 +32,69 @@ Escreva testes automatizados para validar a funcionalidade e a integridade do se
 
 Use PascalCase para nomes de classes e métodos. Classes devem ser substantivos e métodos devem ser verbos.
 
+**Exemplo:**
+
+```csharp
+public class ToDoList
+{
+    private List<string> _tasks;
+
+    public ToDoList()
+    {
+        _tasks = new List<string>();
+    }
+
+    public void AddTask(string task)
+    {
+        _tasks.Add(task);
+    }
+
+    public void RemoveTask(int index)
+    {
+        _tasks.RemoveAt(index);
+    }
+
+    public void DisplayTasks()
+    {
+        for (int i = 0; i < _tasks.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {_tasks[i]}");
+        }
+    }
+}
+
+**Exemplo de conta-regra:**
+
+```csharp
+public class toDo_list
+{
+    private List<string> _Tasks;
+
+    public toDo_list()
+    {
+        _Tasks = new List<string>();
+    }
+
+    public void Add_task(string Task)
+    {
+        _Tasks.Add(Task);
+    }
+
+    public void Remove_task(int Index)
+    {
+        _Tasks.RemoveAt(Index);
+    }
+
+    public void Display_Tasks()
+    {
+        for (int i = 0; i < _Tasks.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {_Tasks[i]}");
+        }
+    }
+}
+
+
 ### 2.2. Parâmetros e Variáveis
 
 Use camelCase para nomes de parâmetros e variáveis.
