@@ -142,11 +142,97 @@ public class ToDoList : IToDoRepository
         }
     }
 }
-
+```
 
 ### 2.4. Clareza e Legibilidade
 
 Evite abreviações ilegíveis e escolha nomes claros e descritivos para suas classes, métodos, variáveis e parâmetros.
+
+**Exemplo:**
+
+```csharp
+public class Task
+{
+    public int Id { get; set; }
+    public string Description { get; set; }
+    public bool IsCompleted { get; set; }
+}
+
+public class ToDoList
+{
+    private List<Task> _tasks;
+
+    public ToDoList()
+    {
+        _tasks = new List<Task>();
+    }
+
+    public void AddTask(Task task)
+    {
+        _tasks.Add(task);
+    }
+
+    public void RemoveTask(int id)
+    {
+        var taskToRemove = _tasks.FirstOrDefault(task => task.Id == id);
+        if (taskToRemove != null)
+        {
+            _tasks.Remove(taskToRemove);
+        }
+    }
+
+    public void DisplayTasks()
+    {
+        foreach (var task in _tasks)
+        {
+            Console.WriteLine($"{task.Id}. {task.Description} - {(task.IsCompleted ? "Completed" : "Not Completed")}");
+        }
+    }
+}
+```
+
+**Exemplo de conta-regra:**
+
+```csharp
+public class Tsk
+{
+    public int i { get; set; }
+    public string dscr { get; set; }
+    public bool cmplt { get; set; }
+}
+
+public class TDL
+{
+    private List<Tsk> _tsks;
+
+    public TDL()
+    {
+        _tsks = new List<Tsk>();
+    }
+
+    public void AddT(Tsk t)
+    {
+        _tsks.Add(t);
+    }
+
+    public void RmvT(int id)
+    {
+        var tRmv = _tsks.FirstOrDefault(t => t.i == id);
+        if (tRmv != null)
+        {
+            _tsks.Remove(tRmv);
+        }
+    }
+
+    public void DispT()
+    {
+        foreach (var t in _tsks)
+        {
+            Console.WriteLine($"{t.i}. {t.dscr} - {(t.cmplt ? "Cmpltd" : "NtCmpltd")}");
+        }
+    }
+}
+```
 
 ## 3. Funções e Métodos
 
