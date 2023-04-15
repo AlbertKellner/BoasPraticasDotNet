@@ -64,37 +64,6 @@ public class ToDoList
 }
 ```
 
-**Exemplo de conta-regra:**
-
-```csharp
-public class toDo_list
-{
-    private List<string> _Tasks;
-
-    public toDo_list()
-    {
-        _Tasks = new List<string>();
-    }
-
-    public void Add_task(string Task)
-    {
-        _Tasks.Add(Task);
-    }
-
-    public void Remove_task(int Index)
-    {
-        _Tasks.RemoveAt(Index);
-    }
-
-    public void Display_Tasks()
-    {
-        for (int i = 0; i < _Tasks.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {_Tasks[i]}");
-        }
-    }
-}
-```
 
 ### 2.2. Parâmetros e Variáveis
 
@@ -132,41 +101,48 @@ public class ToDoList
 }
 ```
 
-**Exemplo de conta-regra:**
-
-```csharp
-public class tdList
-{
-    public List<string> tList;
-
-    public tdList()
-    {
-        tList = new List<string>();
-    }
-
-    public void addT(string t)
-    {
-        tList.Add(t);
-    }
-
-    public void remT(int i)
-    {
-        tList.RemoveAt(i);
-    }
-
-    public void dispT()
-    {
-        for (int i = 0; i < tList.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {tList[i]}");
-        }
-    }
-}
-```
-
 ### 2.3. Interfaces
 
 As interfaces devem começar com 'I', como IProductRepository.
+
+**Exemplo:**
+
+```csharp
+public interface IToDoRepository
+{
+    void AddTask(string task);
+    void RemoveTask(int index);
+    void DisplayTasks();
+}
+
+public class ToDoList : IToDoRepository
+{
+    private List<string> _tasks;
+
+    public ToDoList()
+    {
+        _tasks = new List<string>();
+    }
+
+    public void AddTask(string task)
+    {
+        _tasks.Add(task);
+    }
+
+    public void RemoveTask(int index)
+    {
+        _tasks.RemoveAt(index);
+    }
+
+    public void DisplayTasks()
+    {
+        for (int i = 0; i < _tasks.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {_tasks[i]}");
+        }
+    }
+}
+
 
 ### 2.4. Clareza e Legibilidade
 
