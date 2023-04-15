@@ -240,6 +240,95 @@ public class TDL
 
 Cada função ou método deve ter apenas uma responsabilidade. Isso facilita a leitura, a manutenção e os testes do código.
 
+**Exemplo:**
+
+```csharp
+public class Task
+{
+    public int Id { get; set; }
+    public string Description { get; set; }
+    public bool IsCompleted { get; set; }
+}
+
+public class ToDoList
+{
+    private List<Task> _tasks;
+
+    public ToDoList()
+    {
+        _tasks = new List<Task>();
+    }
+
+    public void AddTask(Task task)
+    {
+        _tasks.Add(task);
+    }
+
+    public void RemoveTask(int taskId)
+    {
+        var taskToRemove = _tasks.FirstOrDefault(t => t.Id == taskId);
+        if (taskToRemove != null)
+        {
+            _tasks.Remove(taskToRemove);
+        }
+    }
+
+    public void DisplayTasks()
+    {
+        foreach (var task in _tasks)
+        {
+            Console.WriteLine($"{task.Id}. {task.Description} - {(task.IsCompleted ? "Completed" : "Not Completed")}");
+        }
+    }
+}
+```
+
+**Exemplo de conta-regra:**
+
+```csharp
+public class Task
+{
+    public int Id { get; set; }
+    public string Description { get; set; }
+    public bool IsCompleted { get; set; }
+}
+
+public class ToDoList
+{
+    private List<Task> _tasks;
+
+    public ToDoList()
+    {
+        _tasks = new List<Task>();
+    }
+
+    public void AddTaskAndDisplay(Task task)
+    {
+        _tasks.Add(task);
+        
+        foreach (var task in _tasks)
+        {
+            Console.WriteLine($"{task.Id}. {task.Description} - {(task.IsCompleted ? "Completed" : "Not Completed")}");
+        }
+    }
+
+    public void RemoveTaskAndDisplay(int taskId)
+    {
+        var taskToRemove = _tasks.FirstOrDefault(t => t.Id == taskId);
+        if (taskToRemove != null)
+        {
+            _tasks.Remove(taskToRemove);
+        }
+
+        foreach (var task in _tasks)
+        {
+            Console.WriteLine($"{task.Id}. {task.Description} - {(task.IsCompleted ? "Completed" : "Not Completed")}");
+        }
+    }
+}
+
+```
+
 ### 3.2. Orquestradores de métodos
 
 Use orquestradores de métodos para coordenar a chamada de diversos métodos e executar uma operação complexa. Isso ajuda a manter o código modular e a separar as responsabilidades.
