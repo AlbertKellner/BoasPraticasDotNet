@@ -60,8 +60,6 @@ Evite usar linguagem imperativa no código, que pode torná-lo difícil de enten
 
 ### 3.4. Tamanho dos métodos
 
-### 3.4. Tamanho dos métodos
-
 Mantenha os métodos curtos, com no máximo 40 ou 50 linhas. Se um método estiver ficando muito longo, considere refatorá-lo em métodos menores.
 
 ### 3.5. Declare variáveis próximas ao uso
@@ -84,19 +82,25 @@ Use a tag `<summary>` para documentar métodos e suas funcionalidades.
 
 ## 5. Tratamento de Exceções
 
-### 5.1. Tratamento de Exceções e Liberação de Recursos
-
-#### 5.1.1. Use try-catch
+### 5.1. Use try-catch
 
 Utilize blocos `try-catch` para tratar exceções e garantir que os recursos sejam liberados corretamente.
 
-#### 5.1.2. Use using
+#### 5.1.1. Benefícios de try-catch
+
+Os blocos `try-catch` permitem capturar e lidar com exceções de maneira apropriada, evitando que o programa encerre inesperadamente e garantindo que os recursos sejam liberados corretamente.
+
+#### 5.1.2. Use o bloco finally
+
+Utilize o bloco `finally` para executar ações de limpeza e garantir que os recursos sejam liberados, mesmo que uma exceção seja lançada. Isso ajuda a prevenir vazamentos de memória e outros problemas relacionados aos recursos.
+
+### 5.2. Use using
 
 O comando `using` pode ser usado para garantir que os objetos que implementam a interface `IDisposable` sejam liberados adequadamente.
 
-### 5.2. Use o bloco finally
+#### 5.2.1. Benefícios do using
 
-Utilize o bloco `finally` para executar ações de limpeza e garantir que os recursos sejam liberados, mesmo que uma exceção seja lançada. Isso ajuda a prevenir vazamentos de memória e outros problemas relacionados aos recursos. O benefício de usar o bloco `finally` é que ele sempre será executado, independentemente de uma exceção ser lançada ou não, garantindo que os recursos sejam liberados e as ações de limpeza sejam realizadas.
+O `using` simplifica a liberação de recursos e garante que eles sejam liberados mesmo em caso de exceções, tornando o código mais seguro e fácil de manter.
 
 ### 5.3. Não engula exceções
 
