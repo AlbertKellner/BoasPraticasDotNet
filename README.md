@@ -333,6 +333,182 @@ public class ToDoList
 
 Use orquestradores de métodos para coordenar a chamada de diversos métodos e executar uma operação complexa. Isso ajuda a manter o código modular e a separar as responsabilidades.
 
+**Exemplo:**
+
+```csharp
+public class Task
+{
+    public int Id { get; set; }
+    public string Description { get; set; }
+    public bool IsCompleted { get; set; }
+}
+
+public interface ITaskRepository
+{
+    void AddTask(Task task);
+    void RemoveTask(int taskId);
+    IEnumerable<Task> GetAllTasks();
+}
+
+public class TaskRepository : ITaskRepository
+{
+    private List<Task> _tasks;
+
+    public TaskRepository()
+    {
+        _tasks = new List<Task>();
+    }
+
+    public void AddTask(Task task)
+    {
+        _tasks.Add(task);
+    }
+
+    public void RemoveTask(int taskId)
+    {
+        var taskToRemove = _tasks.FirstOrDefault(t => t.Id == taskId);
+        if (taskToRemove != null)
+        {
+            _tasks.Remove(taskToRemove);
+        }
+    }
+
+    public IEnumerable<Task> GetAllTasks()
+    {
+        return _tasks;
+    }
+}
+
+public class ToDoList
+{
+    private readonly ITaskRepository _taskRepository;
+
+    public ToDoList(ITaskRepository taskRepository)
+    {
+        _taskRepository = taskRepository;
+    }
+
+    public void AddTask(Task task)
+    {
+        _taskRepository.AddTask(task);
+    }
+
+    public void RemoveTask(int taskId)
+    {
+        _taskRepository.RemoveTask(taskId);
+    }
+
+    public void DisplayTasks()
+    {
+        var tasks = _taskRepository.GetAllTasks();
+        foreach (var task in tasks)
+        {
+            Console.WriteLine($"{task.Id}. {task.Description} - {(task.IsCompleted ? "Completed" : "Not Completed")}");
+        }
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        var taskRepository = new TaskRepository();
+        var toDoList = new ToDoList(taskRepository);
+
+        var task1 = new Task { Id = 1, Description = "Beber café", IsCompleted = false };
+        var task2 = new Task { Id = 2, Description = "Criar documento de Boas Práticas em .net para o IFA", IsCompleted = true };
+
+        toDoList.AddTask(task1);
+        toDoList.AddTask(task2);
+        toDoList.DisplayTasks();
+    }
+}
+```
+
+**Exemplo de conta-regra:**
+
+```csharp
+public class Task
+{
+    public int Id;
+    public string Description;
+    public bool IsCompleted;
+}
+
+public class TaskRepository
+{
+    public List<Task> Tasks;
+
+    public TaskRepository()
+    {
+        Tasks = new List<Task>();
+    }
+
+    public void AddTask(Task task)
+    {
+        Tasks.Add(task);
+    }
+
+    public void RemoveTask(int taskId)
+    {
+        var taskToRemove = Tasks.FirstOrDefault(t => t.Id == taskId);
+        if (taskToRemove != null)
+        {
+            Tasks.Remove(taskToRemove);
+        }
+    }
+
+    public List<Task> GetAllTasks()
+    {
+        return Tasks;
+    }
+}
+
+public class ToDoList
+{
+    public TaskRepository TaskRepo;
+
+    public ToDoList()
+    {
+        TaskRepo = new TaskRepository();
+    }
+
+    public void AddTask(Task task)
+    {
+        TaskRepo.AddTask(task);
+    }
+
+    public void RemoveTask(int taskId)
+    {
+        TaskRepo.RemoveTask(taskId);
+    }
+
+    public void DisplayTasks()
+    {
+        var tasks = TaskRepo.GetAllTasks();
+        foreach (var task in tasks)
+        {
+            Console.WriteLine($"{task.Id}. {task.Description} - {(task.IsCompleted ? "Completed" : "Not Completed")}");
+        }
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        var toDoList = new ToDoList();
+
+        var task1 = new Task { Id = 1, Description = "Beber café", IsCompleted = false };
+        var task2 = new Task { Id = 2, Description = "Criar documento de Boas Práticas em .net para o IFA", IsCompleted = true };
+
+        toDoList.AddTask(task1);
+        toDoList.AddTask(task2);
+        toDoList.DisplayTasks();
+    }
+}
+```
+
 ### 3.3. Linguagem imperativa
 
 Evite usar linguagem imperativa no código, que pode torná-lo difícil de entender e de manter. Em vez disso, prefira uma abordagem mais declarativa, que descreve o que deve ser feito em vez de como fazê-lo.
