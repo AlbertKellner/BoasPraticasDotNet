@@ -35,31 +35,27 @@ Use PascalCase para nomes de classes e métodos. Classes devem ser substantivos 
 **Exemplo:**
 
 ```csharp
+// Exemplo:
+
+// Classe com nome em PascalCase, sendo um substantivo
 public class ToDoList
 {
-    private List<string> _tasks;
-
-    public ToDoList()
+    // Método em PascalCase, sendo um verbo
+    public void AddTask(string taskName)
     {
-        _tasks = new List<string>();
+        // Adiciona uma tarefa à lista de tarefas
     }
 
-    public void AddTask(string task)
+    // Método em PascalCase, sendo um verbo
+    public void RemoveTask(int taskIndex)
     {
-        _tasks.Add(task);
+        // Remove uma tarefa da lista de tarefas
     }
 
-    public void RemoveTask(int index)
-    {
-        _tasks.RemoveAt(index);
-    }
-
+    // Método em PascalCase, sendo um verbo
     public void DisplayTasks()
     {
-        for (int i = 0; i < _tasks.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {_tasks[i]}");
-        }
+        // Exibe todas as tarefas na lista de tarefas
     }
 }
 ```
