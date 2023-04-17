@@ -75,7 +75,7 @@ public class toDo_list
 }
 ```
 
-Neste exemplo, foi violada a boa prática "Use PascalCase para nomes de classes e métodos. Classes devem ser substantivos e métodos devem ser verbos", aplicando as más práticas a seguir:
+Neste exemplo, foi violada a boa prática 2.1 do nível básico "Use PascalCase para nomes de classes e métodos. Classes devem ser substantivos e métodos devem ser verbos", aplicando as más práticas a seguir:
 
 - A classe "toDo_list" está em camelCase e deveria estar em PascalCase.
 - A classe "toDo_list" é um adjetivo, deveria ser um substantivo.
