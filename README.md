@@ -8,11 +8,11 @@ Siga as convenções estabelecidas pelo seu projeto ou equipe. Por exemplo, se o
 
 ### 1.2. Regra do escoteiro
 
-"Deixe sempre o acampamento mais limpo do que você encontrou!" O mesmo vale para o código. Faça check-in do código sempre melhor do que quando você o obteve. Se todos os desenvolvedores no time tiverem essa visão, o projeto evoluirá de forma mais saudável.
+`Deixe sempre o acampamento mais limpo do que você encontrou!` O mesmo vale para o código. Faça check-in do código sempre melhor do que quando você o obteve. Se todos os desenvolvedores no time tiverem essa visão, o projeto evoluirá de forma mais saudável.
 
 ### 1.3. KISS
 
-Mantenha as coisas simples! Siga o princípio "Keep It Simple, Stupid" (Mantenha isso simples e estúpido - KISS). Evite soluções complicadas quando uma abordagem simples e direta for suficiente.
+Mantenha as coisas simples! Siga o princípio `Keep It Simple, Stupid` (Mantenha isso simples e estúpido - KISS). Evite soluções complicadas quando uma abordagem simples e direta for suficiente.
 
 ### 1.4. Causa raiz
 
@@ -78,9 +78,9 @@ public class toDoList
 Para seguir as recomendações de boas práticas, a classe e os métodos deveriam ser nomeados da seguinte forma:
 
 - A classe deveria ser chamada `ToDoList` em vez de `toDoList`.
-- O método "add_task" deveria ser chamado "AddTask".
-- O método "remove_task" deveria ser chamado "RemoveTask".
-- O método "display_tasks" deveria ser chamado "DisplayTasks".
+- O método `add_task` deveria ser chamado `AddTask`.
+- O método `remove_task` deveria ser chamado `RemoveTask`.
+- O método `display_tasks` deveria ser chamado `DisplayTasks`.
 
 ### 2.2. Parâmetros e Variáveis
 
@@ -132,13 +132,13 @@ public class TDL
 
 Veja o que foi feito de errado e como corrigir:
 
-1. A classe "TDL" deve ser renomeada para "ToDoList" para tornar seu propósito mais claro.
+1. A classe `TDL` deve ser renomeada para `ToDoList` para tornar seu propósito mais claro.
 
-2. O método "AT" deve ser renomeado para "AddTask", e sua variável "tn" deve ser renomeada para "taskName". Isso tornará a intenção do método e da variável mais fácil de entender.
+2. O método `AT` deve ser renomeado para `AddTask`, e sua variável `tn` deve ser renomeada para `taskName`. Isso tornará a intenção do método e da variável mais fácil de entender.
 
-3. O método "RT" deve ser renomeado para "RemoveTask", e sua variável "tn" deve ser renomeada para "taskName". Isso melhorará a legibilidade do método e da variável.
+3. O método `RT` deve ser renomeado para `RemoveTask`, e sua variável `tn` deve ser renomeada para `taskName`. Isso melhorará a legibilidade do método e da variável.
 
-4. O método "DT" deve ser renomeado para "DisplayTasks". Isso tornará a intenção do método mais clara.
+4. O método `DT` deve ser renomeado para `DisplayTasks`. Isso tornará a intenção do método mais clara.
 
 Ao aplicar essas correções, estaríamos seguindo a boa prática 2.2 e tornando o código mais fácil de entender e manter.
 
