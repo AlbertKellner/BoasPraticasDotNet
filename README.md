@@ -403,6 +403,64 @@ Dessa forma, estaríamos seguindo a boa prática de Responsabilidade Única, gar
 
 Use orquestradores de métodos para coordenar a chamada de diversos métodos e executar uma operação complexa. Isso ajuda a manter o código modular e a separar as responsabilidades.
 
+Neste exemplo, aplicamos a boa prática utilizando um método orquestrador chamado `ExecuteAction`. Esse método recebe a ação desejada (como adicionar, remover ou marcar uma tarefa como concluída) e a tarefa em questão, e então chama o método apropriado para realizar a ação. Dessa forma, o código fica mais modular e com uma separação clara de responsabilidades, facilitando a leitura, manutenção e teste do código.
+
+```csharp
+public class ToDoList
+{
+    private List<string> _tasks;
+
+    public ToDoList()
+    {
+        _tasks = new List<string>();
+    }
+
+    // Método orquestrador para realizar a ação solicitada
+    public void ExecuteAction(string action, string task)
+    {
+        switch (action)
+        {
+            case "add":
+                AddTask(task);
+                break;
+            case "remove":
+                RemoveTask(task);
+                break;
+            case "complete":
+                CompleteTask(task);
+                break;
+            default:
+                throw new ArgumentException("Ação inválida.");
+        }
+    }
+
+    private void AddTask(string task)
+    {
+        _tasks.Add(task);
+    }
+
+    private void RemoveTask(string task)
+    {
+        string foundTask = _tasks.Find(t => t == task);
+
+        if (foundTask != null)
+        {
+            _tasks.Remove(foundTask);
+        }
+    }
+
+    private void CompleteTask(string task)
+    {
+        int taskIndex = _tasks.FindIndex(t => t == task);
+
+        if (taskIndex != -1)
+        {
+            _tasks[taskIndex] = _tasks[taskIndex] + " (concluída)";
+        }
+    }
+}
+```
+
 ### 3.3. Linguagem imperativa
 
 Evite usar linguagem imperativa no código, que pode torná-lo difícil de entender e de manter. Em vez disso, prefira uma abordagem mais declarativa, que descreve o que deve ser feito em vez de como fazê-lo.
