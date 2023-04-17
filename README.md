@@ -403,60 +403,55 @@ Dessa forma, estaríamos seguindo a boa prática de Responsabilidade Única, gar
 
 Use orquestradores de métodos para coordenar a chamada de diversos métodos e executar uma operação complexa. Isso ajuda a manter o código modular e a separar as responsabilidades.
 
-Neste exemplo, aplicamos a boa prática utilizando um método orquestrador chamado `ExecuteAction`. Esse método recebe a ação desejada (como adicionar, remover ou marcar uma tarefa como concluída) e a tarefa em questão, e então chama o método apropriado para realizar a ação. Dessa forma, o código fica mais modular e com uma separação clara de responsabilidades, facilitando a leitura, manutenção e teste do código.
+Neste exemplo, aplicamos a boa prática utilizando um método orquestrador chamado `RefinarItemCompleto` que coordena a chamada dos outros métodos necessários para refinar tecnicamente um novo item em 6 etapas, dessa forma o código fica mais modular e com uma separação clara de responsabilidades, facilitando a leitura, manutenção e teste do código.
 
 ```csharp
-public class ToDoList
+public class RefinarItem
 {
-    private List<string> _tasks;
-
-    public ToDoList()
+    static void Main()
     {
-        _tasks = new List<string>();
+        RefinarItemCompleto();
     }
 
-    // Método orquestrador para realizar a ação solicitada
-    public void ExecuteAction(string action, string task)
+    // Orquestrador de métodos para refinar tecnicamente uma nova demanda em 6 etapas
+    static void RefinarItemCompleto()
     {
-        switch (action)
-        {
-            case "add":
-                AddTask(task);
-                break;
-            case "remove":
-                RemoveTask(task);
-                break;
-            case "complete":
-                CompleteTask(task);
-                break;
-            default:
-                throw new ArgumentException("Ação inválida.");
-        }
+        ValidarEspecificacoes();
+        AnalisarArquitetura();
+        ImplementarFuncionalidades();
+        TestarItem();
+        ControleQualidade();
+        DocumentarItem();
     }
 
-    private void AddTask(string task)
+    static void ValidarEspecificacoes()
     {
-        _tasks.Add(task);
+        // código de exemplo para validar as especificações
     }
 
-    private void RemoveTask(string task)
+    static void AnalisarArquitetura()
     {
-        string foundTask = _tasks.Find(t => t == task);
-
-        if (foundTask != null)
-        {
-            _tasks.Remove(foundTask);
-        }
+        // código de exemplo para analisar a arquitetura
     }
 
-    private void CompleteTask(string task)
+    static void ImplementarFuncionalidades()
     {
-        int taskIndex = _tasks.FindIndex(t => t == task);
+        // código de exemplo para implementar as funcionalidades
+    }
 
-        if (taskIndex != -1)
-        {
-            _tasks[taskIndex] = _tasks[taskIndex] + " (concluída)";
-        }
+    static void TestarItem()
+    {
+        // código de exemplo para testar o item
+    }
+
+    static void ControleQualidade()
+    {
+        // código de exemplo para realizar o controle de qualidade
+    }
+
+    static void DocumentarItem()
+    {
+        // código de exemplo para realizar a documentação
     }
 }
 ```
