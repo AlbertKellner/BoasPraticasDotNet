@@ -56,203 +56,43 @@ public class ToDoList
 
 Quebrando a boa prática: Classe e métodos em camelCase, sendo a classe um adjetivo e os métodos substantivos
 ```csharp
-public class toDo_list
+public class toDoList
 {
-    public void taskAdd(string taskName)
+    public void add_task(string task)
     {
-        // Código para adicionar tarefa
+        // Código para adicionar a tarefa à lista.
     }
 
-    public void taskDone(int taskId)
+    public void remove_task(string task)
     {
-        // Código para marcar tarefa como concluída
+        // Código para remover a tarefa da lista.
     }
 
-    public void taskRemove(int taskId)
+    public void display_tasks()
     {
-        // Código para remover tarefa
+        // Código para exibir todas as tarefas da lista.
     }
 }
 ```
 
-Neste exemplo, foi violada a boa prática 2.1 do nível básico "Use PascalCase para nomes de classes e métodos. Classes devem ser substantivos e métodos devem ser verbos", aplicando as más práticas a seguir:
+Para seguir as recomendações de boas práticas, a classe e os métodos deveriam ser nomeados da seguinte forma:
 
-- A classe "toDo_list" está em camelCase e deveria estar em PascalCase.
-- A classe "toDo_list" é um adjetivo, deveria ser um substantivo.
-- Os métodos "taskAdd", "taskDone" e "taskRemove" estão em camelCase, deveriam estar em PascalCase.
-- Os métodos "taskAdd", "taskDone" e "taskRemove" são substantivos, deveriam ser verbos.
-
-
-
+- A classe deveria ser chamada `ToDoList` em vez de `toDoList`.
+- O método "add_task" deveria ser chamado "AddTask".
+- O método "remove_task" deveria ser chamado "RemoveTask".
+- O método "display_tasks" deveria ser chamado "DisplayTasks".
 
 ### 2.2. Parâmetros e Variáveis
 
 Use camelCase para nomes de parâmetros e variáveis.
 
-**Exemplo:**
-
-```csharp
-public class ToDoList
-{
-    private List<string> _tasks;
-
-    public ToDoList()
-    {
-        _tasks = new List<string>();
-    }
-
-    public void AddTask(string task)
-    {
-        _tasks.Add(task);
-    }
-
-    public void RemoveTask(int index)
-    {
-        _tasks.RemoveAt(index);
-    }
-
-    public void DisplayTasks()
-    {
-        for (int i = 0; i < _tasks.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {_tasks[i]}");
-        }
-    }
-}
-```
-
 ### 2.3. Interfaces
 
 As interfaces devem começar com 'I', como IProductRepository.
 
-**Exemplo:**
-
-```csharp
-public interface IToDoRepository
-{
-    void AddTask(string task);
-    void RemoveTask(int index);
-    void DisplayTasks();
-}
-
-public class ToDoList : IToDoRepository
-{
-    private List<string> _tasks;
-
-    public ToDoList()
-    {
-        _tasks = new List<string>();
-    }
-
-    public void AddTask(string task)
-    {
-        _tasks.Add(task);
-    }
-
-    public void RemoveTask(int index)
-    {
-        _tasks.RemoveAt(index);
-    }
-
-    public void DisplayTasks()
-    {
-        for (int i = 0; i < _tasks.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {_tasks[i]}");
-        }
-    }
-}
-```
-
 ### 2.4. Clareza e Legibilidade
 
 Evite abreviações ilegíveis e escolha nomes claros e descritivos para suas classes, métodos, variáveis e parâmetros.
-
-**Exemplo:**
-
-```csharp
-public class Task
-{
-    public int Id { get; set; }
-    public string Description { get; set; }
-    public bool IsCompleted { get; set; }
-}
-
-public class ToDoList
-{
-    private List<Task> _tasks;
-
-    public ToDoList()
-    {
-        _tasks = new List<Task>();
-    }
-
-    public void AddTask(Task task)
-    {
-        _tasks.Add(task);
-    }
-
-    public void RemoveTask(int id)
-    {
-        var taskToRemove = _tasks.FirstOrDefault(task => task.Id == id);
-        if (taskToRemove != null)
-        {
-            _tasks.Remove(taskToRemove);
-        }
-    }
-
-    public void DisplayTasks()
-    {
-        foreach (var task in _tasks)
-        {
-            Console.WriteLine($"{task.Id}. {task.Description} - {(task.IsCompleted ? "Completed" : "Not Completed")}");
-        }
-    }
-}
-```
-
-**Exemplo de conta-regra:**
-
-```csharp
-public class Tsk
-{
-    public int i { get; set; }
-    public string dscr { get; set; }
-    public bool cmplt { get; set; }
-}
-
-public class TDL
-{
-    private List<Tsk> _tsks;
-
-    public TDL()
-    {
-        _tsks = new List<Tsk>();
-    }
-
-    public void AddT(Tsk t)
-    {
-        _tsks.Add(t);
-    }
-
-    public void RmvT(int id)
-    {
-        var tRmv = _tsks.FirstOrDefault(t => t.i == id);
-        if (tRmv != null)
-        {
-            _tsks.Remove(tRmv);
-        }
-    }
-
-    public void DispT()
-    {
-        foreach (var t in _tsks)
-        {
-            Console.WriteLine($"{t.i}. {t.dscr} - {(t.cmplt ? "Cmpltd" : "NtCmpltd")}");
-        }
-    }
-}
-```
 
 ## 3. Funções e Métodos
 
@@ -260,191 +100,9 @@ public class TDL
 
 Cada função ou método deve ter apenas uma responsabilidade. Isso facilita a leitura, a manutenção e os testes do código.
 
-**Exemplo:**
-
-```csharp
-public class Task
-{
-    public int Id { get; set; }
-    public string Description { get; set; }
-    public bool IsCompleted { get; set; }
-}
-
-public class ToDoList
-{
-    private List<Task> _tasks;
-
-    public ToDoList()
-    {
-        _tasks = new List<Task>();
-    }
-
-    public void AddTask(Task task)
-    {
-        _tasks.Add(task);
-    }
-
-    public void RemoveTask(int taskId)
-    {
-        var taskToRemove = _tasks.FirstOrDefault(t => t.Id == taskId);
-        if (taskToRemove != null)
-        {
-            _tasks.Remove(taskToRemove);
-        }
-    }
-
-    public void DisplayTasks()
-    {
-        foreach (var task in _tasks)
-        {
-            Console.WriteLine($"{task.Id}. {task.Description} - {(task.IsCompleted ? "Completed" : "Not Completed")}");
-        }
-    }
-}
-```
-
-**Exemplo de conta-regra:**
-
-```csharp
-public class Task
-{
-    public int Id { get; set; }
-    public string Description { get; set; }
-    public bool IsCompleted { get; set; }
-}
-
-public class ToDoList
-{
-    private List<Task> _tasks;
-
-    public ToDoList()
-    {
-        _tasks = new List<Task>();
-    }
-
-    public void AddTaskAndDisplay(Task task)
-    {
-        _tasks.Add(task);
-        
-        foreach (var task in _tasks)
-        {
-            Console.WriteLine($"{task.Id}. {task.Description} - {(task.IsCompleted ? "Completed" : "Not Completed")}");
-        }
-    }
-
-    public void RemoveTaskAndDisplay(int taskId)
-    {
-        var taskToRemove = _tasks.FirstOrDefault(t => t.Id == taskId);
-        if (taskToRemove != null)
-        {
-            _tasks.Remove(taskToRemove);
-        }
-
-        foreach (var task in _tasks)
-        {
-            Console.WriteLine($"{task.Id}. {task.Description} - {(task.IsCompleted ? "Completed" : "Not Completed")}");
-        }
-    }
-}
-
-```
-
 ### 3.2. Orquestradores de métodos
 
 Use orquestradores de métodos para coordenar a chamada de diversos métodos e executar uma operação complexa. Isso ajuda a manter o código modular e a separar as responsabilidades.
-
-**Exemplo:**
-
-```csharp
-public class Task
-{
-    public int Id { get; set; }
-    public string Description { get; set; }
-    public bool IsCompleted { get; set; }
-}
-
-public interface ITaskRepository
-{
-    void AddTask(Task task);
-    void RemoveTask(int taskId);
-    IEnumerable<Task> GetAllTasks();
-}
-
-public class TaskRepository : ITaskRepository
-{
-    private List<Task> _tasks;
-
-    public TaskRepository()
-    {
-        _tasks = new List<Task>();
-    }
-
-    public void AddTask(Task task)
-    {
-        _tasks.Add(task);
-    }
-
-    public void RemoveTask(int taskId)
-    {
-        var taskToRemove = _tasks.FirstOrDefault(t => t.Id == taskId);
-        if (taskToRemove != null)
-        {
-            _tasks.Remove(taskToRemove);
-        }
-    }
-
-    public IEnumerable<Task> GetAllTasks()
-    {
-        return _tasks;
-    }
-}
-
-public class ToDoList
-{
-    private readonly ITaskRepository _taskRepository;
-
-    public ToDoList(ITaskRepository taskRepository)
-    {
-        _taskRepository = taskRepository;
-    }
-
-    public void AddTask(Task task)
-    {
-        _taskRepository.AddTask(task);
-    }
-
-    public void RemoveTask(int taskId)
-    {
-        _taskRepository.RemoveTask(taskId);
-    }
-
-    public void DisplayTasks()
-    {
-        var tasks = _taskRepository.GetAllTasks();
-        foreach (var task in tasks)
-        {
-            Console.WriteLine($"{task.Id}. {task.Description} - {(task.IsCompleted ? "Completed" : "Not Completed")}");
-        }
-    }
-}
-
-public class Program
-{
-    public static void Main()
-    {
-        var taskRepository = new TaskRepository();
-        var toDoList = new ToDoList(taskRepository);
-
-        var task1 = new Task { Id = 1, Description = "Beber café", IsCompleted = false };
-        var task2 = new Task { Id = 2, Description = "Criar documento de Boas Práticas em .net para o IFA", IsCompleted = true };
-
-        toDoList.AddTask(task1);
-        toDoList.AddTask(task2);
-        toDoList.DisplayTasks();
-    }
-}
-```
-
 
 ### 3.3. Linguagem imperativa
 
