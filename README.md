@@ -221,7 +221,7 @@ public interface ITodoList
 
 Evite abreviações ilegíveis e escolha nomes claros e descritivos para suas classes, métodos, variáveis e parâmetros.
 
-// Exemplo:
+Exemplo:
 ```csharp
 public class TodoList
 {
