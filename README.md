@@ -390,13 +390,9 @@ public class ToDoList
 }
 ```
 
-Como todo esse trecho de código foi contra as recomendações de boas práticas:
+Todo esse trecho de código foi contra as recomendações de boas práticas. O método `ManageTasks` possui múltiplas responsabilidades, ou seja, ele adiciona, remove e marca tarefas como concluídas. Isso vai contra a boa prática de Responsabilidade Única.
 
-O método `ManageTasks` possui múltiplas responsabilidades, ou seja, ele adiciona, remove e marca tarefas como concluídas. Isso vai contra a boa prática de Responsabilidade Única.
-
-O que deveria ser feito para atender essas recomendações:
-
-Dividir o método `ManageTasks` em três métodos separados, cada um responsável por uma única ação:
+O que deveria ser feito para atender essas recomendações: Dividir o método `ManageTasks` em três métodos separados, cada um responsável por uma única ação.
     - `AddTask`: para adicionar uma tarefa à lista.
     - `RemoveTask`: para remover uma tarefa da lista.
     - `CompleteTask`: para marcar uma tarefa como concluída.
