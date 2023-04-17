@@ -86,6 +86,65 @@ Para seguir as recomendações de boas práticas, a classe e os métodos deveria
 
 Use camelCase para nomes de parâmetros e variáveis.
 
+Exemplo: Nesta classe, aplicamos a boa prática 2.2 usando nomes claros e significativos para classes, métodos e variáveis.
+
+```csharp
+public class ToDoList
+{
+    // Este método adiciona uma tarefa à lista.
+    public void AddTask(string taskName)
+    {
+        // Código para adicionar a tarefa à lista.
+    }
+
+    // Este método remove uma tarefa da lista.
+    public void RemoveTask(string taskName)
+    {
+        // Código para remover a tarefa da lista.
+    }
+
+    // Este método exibe todas as tarefas da lista.
+    public void DisplayTasks()
+    {
+        // Código para exibir todas as tarefas.
+    }
+}
+```
+
+Quebrando a boa prática: Nesta classe, quebramos a boa prática usando nomes pouco claros e não significativos para classes, métodos e variáveis.
+
+```csharp
+public class TDL
+{
+    public void AT(string tn)
+    {
+        // Código para adicionar a tarefa à lista.
+    }
+
+    public void RT(string tn)
+    {
+        // Código para remover a tarefa da lista.
+    }
+
+    public void DT()
+    {
+        // Código para exibir todas as tarefas.
+    }
+}
+```
+
+Veja o que foi feito de errado e como corrigir:
+
+1. A classe "TDL" deve ser renomeada para "ToDoList" para tornar seu propósito mais claro.
+
+2. O método "AT" deve ser renomeado para "AddTask", e sua variável "tn" deve ser renomeada para "taskName". Isso tornará a intenção do método e da variável mais fácil de entender.
+
+3. O método "RT" deve ser renomeado para "RemoveTask", e sua variável "tn" deve ser renomeada para "taskName". Isso melhorará a legibilidade do método e da variável.
+
+4. O método "DT" deve ser renomeado para "DisplayTasks". Isso tornará a intenção do método mais clara.
+
+Ao aplicar essas correções, estaríamos seguindo a boa prática 2.2 e tornando o código mais fácil de entender e manter.
+
 ### 2.3. Interfaces
 
 As interfaces devem começar com 'I', como IProductRepository.
