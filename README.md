@@ -309,6 +309,99 @@ No exemplo acima, o código foi escrito indo contra a boa prática, que foca na 
 
 Cada função ou método deve ter apenas uma responsabilidade. Isso facilita a leitura, a manutenção e os testes do código.
 
+Exemplo: Cada método tem apenas uma responsabilidade
+```csharp
+public class ToDoList
+{
+    private List<string> _tasks;
+
+    public ToDoList()
+    {
+        _tasks = new List<string>();
+    }
+
+    public void AddTask(string task)
+    {
+        _tasks.Add(task);
+    }
+
+    public void RemoveTask(string task)
+    {
+        string foundTask = _tasks.Find(t => t == task);
+
+        if (foundTask != null)
+        {
+            _tasks.Remove(foundTask);
+        }
+    }
+
+    public void CompleteTask(string task)
+    {
+        int taskIndex = _tasks.FindIndex(t => t == task);
+
+        if (taskIndex != -1)
+        {
+            _tasks[taskIndex] = _tasks[taskIndex] + " (concluída)";
+        }
+    }
+}
+```
+
+Quebrando a boa prática:
+```csharp
+public class ToDoList
+{
+    private List<string> _tasks;
+
+    public ToDoList()
+    {
+        _tasks = new List<string>();
+    }
+
+    // Método para adicionar, remover ou marcar uma tarefa como concluída
+    public void ManageTasks(string action, string task)
+    {
+        if (action == "add")
+        {
+            // Adiciona a tarefa à lista
+            _tasks.Add(task);
+        }
+        else if (action == "remove")
+        {
+            // Remove a tarefa da lista
+            string foundTask = _tasks.Find(t => t == task);
+
+            if (foundTask != null)
+            {
+                _tasks.Remove(foundTask);
+            }
+        }
+        else if (action == "complete")
+        {
+            // Marca a tarefa como concluída
+            int taskIndex = _tasks.FindIndex(t => t == task);
+
+            if (taskIndex != -1)
+            {
+                _tasks[taskIndex] = _tasks[taskIndex] + " (concluída)";
+            }
+        }
+    }
+}
+
+Como todo esse trecho de código foi contra as recomendações de boas práticas:
+
+O método `ManageTasks` possui múltiplas responsabilidades, ou seja, ele adiciona, remove e marca tarefas como concluídas. Isso vai contra a boa prática de Responsabilidade Única.
+
+O que deveria ser feito para atender essas recomendações:
+
+Dividir o método `ManageTasks` em três métodos separados, cada um responsável por uma única ação:
+    - `AddTask`: para adicionar uma tarefa à lista.
+    - `RemoveTask`: para remover uma tarefa da lista.
+    - `CompleteTask`: para marcar uma tarefa como concluída.
+
+Dessa forma, estaríamos seguindo a boa prática de Responsabilidade Única, garantindo que cada método tenha apenas uma responsabilidade, facilitando a leitura, manutenção e teste do código.
+
 ### 3.2. Orquestradores de métodos
 
 Use orquestradores de métodos para coordenar a chamada de diversos métodos e executar uma operação complexa. Isso ajuda a manter o código modular e a separar as responsabilidades.
