@@ -32,33 +32,61 @@ Escreva testes automatizados para validar a funcionalidade e a integridade do se
 
 Use PascalCase para nomes de classes e métodos. Classes devem ser substantivos e métodos devem ser verbos.
 
-**Exemplo:**
-
+Exemplo: Classe e métodos em PascalCase, sendo a classe um substantivo e os métodos verbos
 ```csharp
-// Exemplo:
 
-// Classe com nome em PascalCase, sendo um substantivo
 public class ToDoList
 {
-    // Método em PascalCase, sendo um verbo
     public void AddTask(string taskName)
     {
-        // Adiciona uma tarefa à lista de tarefas
+        // Código para adicionar tarefa
     }
 
-    // Método em PascalCase, sendo um verbo
-    public void RemoveTask(int taskIndex)
+    public void MarkTaskAsDone(int taskId)
     {
-        // Remove uma tarefa da lista de tarefas
+        // Código para marcar tarefa como concluída
     }
 
-    // Método em PascalCase, sendo um verbo
-    public void DisplayTasks()
+    public void RemoveTask(int taskId)
     {
-        // Exibe todas as tarefas na lista de tarefas
+        // Código para remover tarefa
+    }
+}
+
+```
+
+Quebrando a boa prática: Classe e métodos em camelCase, sendo a classe um adjetivo e os métodos substantivos
+```csharp
+public class toDo_list
+{
+    // Tarefa adicionada à lista
+    public void taskAdd(string taskName)
+    {
+        // Código para adicionar tarefa
+    }
+
+    // Tarefa marcada como concluída
+    public void taskDone(int taskId)
+    {
+        // Código para marcar tarefa como concluída
+    }
+
+    // Tarefa removida da lista
+    public void taskRemove(int taskId)
+    {
+        // Código para remover tarefa
     }
 }
 ```
+
+Neste exemplo, foi violada a boa prática "Use PascalCase para nomes de classes e métodos. Classes devem ser substantivos e métodos devem ser verbos", aplicando as más práticas a seguir:
+
+- A classe "toDo_list" está em camelCase e deveria estar em PascalCase.
+- A classe "toDo_list" é um adjetivo, deveria ser um substantivo.
+- Os métodos "taskAdd", "taskDone" e "taskRemove" estão em camelCase, deveriam estar em PascalCase.
+- Os métodos "taskAdd", "taskDone" e "taskRemove" são substantivos, deveriam ser verbos.
+
+
 
 
 ### 2.2. Parâmetros e Variáveis
