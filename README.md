@@ -146,6 +146,77 @@ Ao aplicar essas correções, estaríamos seguindo a boa prática 2.2 e tornando
 
 As interfaces devem começar com 'I', como IProductRepository.
 
+Exemplo: Iniciar nomes de interfaces com 'I'
+
+```csharp
+public interface ITodoList
+{
+    void AddTask(string taskName, string taskDescription);
+    void RemoveTask(int taskId);
+    void UpdateTaskStatus(int taskId, bool isCompleted);
+}
+
+public class TodoList : ITodoList
+{
+    private List<Task> tasks = new List<Task>();
+
+    public void AddTask(string taskName, string taskDescription)
+    {
+        // Este método adiciona uma tarefa à lista de To-Do
+    }
+
+    public void RemoveTask(int taskId)
+    {
+        // Este método remove uma tarefa da lista de To-Do
+    }
+
+    public void UpdateTaskStatus(int taskId, bool isCompleted)
+    {
+        // Este método atualiza o status de uma tarefa na lista de To-Do
+    }
+}
+```
+
+Quebrando a boa prática: Iniciar nomes de interfaces com 'I'
+```csharp
+public interface TodoListInterface
+{
+    void AddTask(string taskName, string taskDescription);
+    void RemoveTask(int taskId);
+    void UpdateTaskStatus(int taskId, bool isCompleted);
+}
+
+public class TodoList : TodoListInterface
+{
+    private List<Task> tasks = new List<Task>();
+
+    public void AddTask(string taskName, string taskDescription)
+    {
+        // Este método adiciona uma tarefa à lista de To-Do
+    }
+
+    public void RemoveTask(int taskId)
+    {
+        // Este método remove uma tarefa da lista de To-Do
+    }
+
+    public void UpdateTaskStatus(int taskId, bool isCompleted)
+    {
+        // Este método atualiza o status de uma tarefa na lista de To-Do
+    }
+}
+
+```
+
+No trecho de código acima, foi quebrada a boa prática 2.3, que recomenda iniciar os nomes das interfaces com a letra 'I'. A interface foi nomeada como `TodoListInterface` em vez de `ITodoList`. Para corrigir isso e seguir a recomendação de boas práticas, a interface deveria ser renomeada para `ITodoList`.
+
+```csharp
+public interface ITodoList
+{
+    // ...
+}
+```
+
 ### 2.4. Clareza e Legibilidade
 
 Evite abreviações ilegíveis e escolha nomes claros e descritivos para suas classes, métodos, variáveis e parâmetros.
