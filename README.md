@@ -8,11 +8,11 @@ Siga as convenções estabelecidas pelo seu projeto ou equipe. Por exemplo, se o
 
 ### 1.2. Regra do escoteiro
 
-`Deixe sempre o acampamento mais limpo do que você encontrou!` O mesmo vale para o código. Faça check-in do código sempre melhor do que quando você o obteve. Se todos os desenvolvedores no time tiverem essa visão, o projeto evoluirá de forma mais saudável.
+"Deixe sempre o acampamento mais limpo do que você encontrou!" O mesmo vale para o código. Faça check-in do código sempre melhor do que quando você o obteve. Se todos os desenvolvedores no time tiverem essa visão, o projeto evoluirá de forma mais saudável.
 
 ### 1.3. KISS
 
-Mantenha as coisas simples! Siga o princípio `Keep It Simple, Stupid` (Mantenha isso simples e estúpido - KISS). Evite soluções complicadas quando uma abordagem simples e direta for suficiente.
+Mantenha as coisas simples! Siga o princípio "Keep It Simple, Stupid" (Mantenha isso simples e estúpido - KISS). Evite soluções complicadas quando uma abordagem simples e direta for suficiente.
 
 ### 1.4. Causa raiz
 
