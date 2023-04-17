@@ -403,55 +403,59 @@ Dessa forma, estaríamos seguindo a boa prática de Responsabilidade Única, gar
 
 Use orquestradores de métodos para coordenar a chamada de diversos métodos e executar uma operação complexa. Isso ajuda a manter o código modular e a separar as responsabilidades.
 
-Neste exemplo, aplicamos a boa prática utilizando um método orquestrador chamado `RefinarItemCompleto` que coordena a chamada dos outros métodos necessários para refinar tecnicamente um novo item em 6 etapas, dessa forma o código fica mais modular e com uma separação clara de responsabilidades, facilitando a leitura, manutenção e teste do código.
+Neste exemplo, aplicamos a boa prática usando um método orquestrador `RegisterNewUser` para coordenar a chamada de diversos métodos e executar uma operação complexa. Os métodos não são do tipo void, e o orquestrador recebe e manipula os retornos de cada método anterior. Além disso, utilizamos variáveis implícitas para melhorar a legibilidade e a manutenção do código.
 
 ```csharp
-public class RefinarItem
+public class UserRegistration
 {
-    static void Main()
+    public bool RegisterNewUser(User newUser)
     {
-        RefinarItemCompleto();
+        var validationResult = ValidateUserData(newUser);
+
+        if (validationResult.IsInvalid)
+        {
+            throw new InvalidOperationException($"Erro na validação de usuário.");
+        }
+
+        var userExists = UserExists(newUser);
+
+        if (userExists)
+        {
+            throw new InvalidOperationException("Usuário já existe.");
+        }
+
+        var savedUser = SaveUser(newUser);
+
+        var isEmailSent = SendWelcomeEmail(savedUser);
+
+        var isEmailVerificationSent = SendEmailVerification(savedUser);
+
+        return isEmailSent && isEmailVerificationSent;
     }
 
-    // Orquestrador de métodos para refinar tecnicamente uma nova demanda em 6 etapas
-    static void RefinarItemCompleto()
+    private ValidationResult ValidateUserData(User user)
     {
-        ValidarEspecificacoes();
-        AnalisarArquitetura();
-        ImplementarFuncionalidades();
-        TestarItem();
-        ControleQualidade();
-        DocumentarItem();
+        // Lógica de validação aqui
     }
 
-    static void ValidarEspecificacoes()
+    private bool UserExists(User user)
     {
-        // código de exemplo para validar as especificações
+        // Lógica de verificação aqui, chamando o repositorio
     }
 
-    static void AnalisarArquitetura()
+    private User SaveUser(User user)
     {
-        // código de exemplo para analisar a arquitetura
+        // Lógica de salvamento aqui, chamando o repositorio
     }
 
-    static void ImplementarFuncionalidades()
+    private bool SendWelcomeEmail(User user)
     {
-        // código de exemplo para implementar as funcionalidades
+        // Lógica de envio de email aqui, chamando a infraestrutura
     }
 
-    static void TestarItem()
+    private bool SendEmailVerification(User user)
     {
-        // código de exemplo para testar o item
-    }
-
-    static void ControleQualidade()
-    {
-        // código de exemplo para realizar o controle de qualidade
-    }
-
-    static void DocumentarItem()
-    {
-        // código de exemplo para realizar a documentação
+        // Lógica de envio de email aqui, chamando a infraestrutura
     }
 }
 ```
