@@ -58,19 +58,16 @@ Quebrando a boa prática: Classe e métodos em camelCase, sendo a classe um adje
 ```csharp
 public class toDo_list
 {
-    // Tarefa adicionada à lista
     public void taskAdd(string taskName)
     {
         // Código para adicionar tarefa
     }
 
-    // Tarefa marcada como concluída
     public void taskDone(int taskId)
     {
         // Código para marcar tarefa como concluída
     }
 
-    // Tarefa removida da lista
     public void taskRemove(int taskId)
     {
         // Código para remover tarefa
