@@ -32,9 +32,8 @@ Escreva testes automatizados para validar a funcionalidade e a integridade do se
 
 Use PascalCase para nomes de classes e métodos. Classes devem ser substantivos e métodos devem ser verbos.
 
-Exemplo: Classe e métodos em PascalCase, sendo a classe um substantivo e os métodos verbos
 ```csharp
-
+// Exemplo: Classe e métodos em PascalCase, sendo a classe um substantivo e os métodos verbos
 public class ToDoList
 {
     public void AddTask(string taskName)
@@ -55,8 +54,8 @@ public class ToDoList
 
 ```
 
-Quebrando a boa prática: Classe e métodos em camelCase, sendo a classe um adjetivo e os métodos substantivos
 ```csharp
+//Quebrando a boa prática: Classe e métodos em camelCase, sendo a classe um adjetivo e os métodos substantivos
 public class toDo_list
 {
     // Tarefa adicionada à lista
