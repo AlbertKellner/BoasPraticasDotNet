@@ -91,19 +91,16 @@ Exemplo: Nesta classe, aplicamos a boa prática 2.2 usando nomes claros e signif
 ```csharp
 public class ToDoList
 {
-    // Este método adiciona uma tarefa à lista.
     public void AddTask(string taskName)
     {
         // Código para adicionar a tarefa à lista.
     }
 
-    // Este método remove uma tarefa da lista.
     public void RemoveTask(string taskName)
     {
         // Código para remover a tarefa da lista.
     }
 
-    // Este método exibe todas as tarefas da lista.
     public void DisplayTasks()
     {
         // Código para exibir todas as tarefas.
