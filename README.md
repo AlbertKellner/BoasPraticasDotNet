@@ -464,6 +464,121 @@ public class UserRegistration
 
 Evite usar linguagem imperativa no código, que pode torná-lo difícil de entender e de manter. Em vez disso, prefira uma abordagem mais declarativa, que descreve o que deve ser feito em vez de como fazê-lo.
 
+Neste exemplo, em vez de usar loops e instruções condicionais imperativas para manipular a lista de tarefas, aplicamos uma abordagem mais declarativa usando métodos como Single e Where da biblioteca LINQ. Isso torna o código mais fácil de entender e manter.
+
+```csharp
+public class ToDoItem
+{
+    public int Id { get; set; }
+    public string Description { get; set; }
+    public bool IsDone { get; set; }
+}
+
+public class ToDoList
+{
+    private List<ToDoItem> _toDoItems;
+
+    public ToDoList()
+    {
+        _toDoItems = new List<ToDoItem>();
+    }
+
+    public void AddItem(string taskDescription)
+    {
+        _toDoItems.Add(
+            new ToDoItem 
+                { 
+                    Description = taskDescription, 
+                    IsDone = false 
+                });
+    }
+
+    public void MarkItemAsDone(int itemId)
+    {
+        _toDoItems
+            .Single(item =>
+                item.Id == itemId)
+            .IsDone = true;
+    }
+
+    public IEnumerable<ToDoItem> GetPendingItems()
+    {
+        return _toDoItems
+            .Where(item => !item.IsDone);
+    }
+}
+```
+
+Quebrando a boa prática: Usando linguagem imperativa no código em vez de uma abordagem declarativa
+
+```csharp
+public class ToDoItem
+{
+    public int Id { get; set; }
+    public string Description { get; set; }
+    public bool IsDone { get; set; }
+}
+
+public class ToDoList
+{
+    private List<ToDoItem> _toDoItems;
+
+    public ToDoList()
+    {
+        _toDoItems = new List<ToDoItem>();
+    }
+
+    public void AddItem(string taskDescription)
+    {
+        var newItem = 
+            new ToDoItem { 
+                Description = taskDescription, 
+                IsDone = false 
+            };
+        
+        _toDoItems.Add(newItem);
+    }
+
+    public void MarkItemAsDone(int itemId)
+    {
+        foreach (var item in _toDoItems)
+        {
+            if (item.Id == itemId)
+            {
+                item.IsDone = true;
+                break;
+            }
+        }
+    }
+
+    public List<ToDoItem> GetPendingItems()
+    {
+        var pendingItems = new List<ToDoItem>();
+
+        foreach (var item in _toDoItems)
+        {
+            if (!item.IsDone)
+            {
+                pendingItems.Add(item);
+            }
+        }
+
+        return pendingItems;
+    }
+}
+```
+
+No código acima, usamos linguagem imperativa, como loops e instruções condicionais, em vez de uma abordagem declarativa. Isso vai contra a boa prática mencionada.
+
+Para melhorar o código e seguir as recomendações de boas práticas, podemos fazer o seguinte:
+
+- Use a biblioteca `LINQ` para simplificar o código e torná-lo mais declarativo. Por exemplo, substitua o loop `foreach` no método `MarkItemAsDone` por um método `Single` da biblioteca `LINQ`.
+
+- No método `GetPendingItems`, use o método `Where` da biblioteca `LINQ` em vez do loop `foreach` para filtrar os itens pendentes de maneira mais declarativa.
+
+Ao aplicar essas recomendações, teremos um código mais fácil de entender e manter, seguindo a boa prática de evitar a linguagem imperativa e preferir uma abordagem mais declarativa.
+
+
 ### 3.4. Tamanho dos métodos
 
 Mantenha os métodos curtos, com no máximo 40 ou 50 linhas. Se um método estiver ficando muito longo, considere refatorá-lo em métodos menores.
