@@ -32,7 +32,7 @@ Escreva testes automatizados para validar a funcionalidade e a integridade do se
 
 Use PascalCase para nomes de classes e métodos. Classes devem ser substantivos e métodos devem ser verbos.
 
-Exemplo: Classe e métodos em PascalCase, sendo a classe um substantivo e os métodos verbos
+Exemplo:
 ```csharp
 public class ToDoList
 {
@@ -86,7 +86,7 @@ Para seguir as recomendações de boas práticas, a classe e os métodos deveria
 
 Use camelCase para nomes de parâmetros e variáveis.
 
-Exemplo: Nesta classe, aplicamos a boa prática 2.2 usando nomes claros e significativos para classes, métodos e variáveis.
+Exemplo:
 
 ```csharp
 public class ToDoList
@@ -146,7 +146,7 @@ Ao aplicar essas correções, estaríamos seguindo a boa prática 2.2 e tornando
 
 As interfaces devem começar com 'I', como IProductRepository.
 
-Exemplo: Iniciar nomes de interfaces com 'I'
+Exemplo:
 
 ```csharp
 public interface ITodoList
@@ -220,6 +220,88 @@ public interface ITodoList
 ### 2.4. Clareza e Legibilidade
 
 Evite abreviações ilegíveis e escolha nomes claros e descritivos para suas classes, métodos, variáveis e parâmetros.
+
+// Exemplo:
+```csharp
+public class TodoList
+{
+    private List<Task> tasks = new List<Task>();
+
+    public void AddTask(string taskName, string taskDescription)
+    {
+        Task newTask = new Task {
+                                    Name = taskName, 
+                                    Description = taskDescription, 
+                                    IsCompleted = false 
+                                };
+        tasks.Add(newTask);
+    }
+
+    public void RemoveTask(int taskId)
+    {
+        Task taskToRemove = tasks.FirstOrDefault(t => t.Id == taskId);
+
+        if (taskToRemove != null)
+        {
+            tasks.Remove(taskToRemove);
+        }
+    }
+
+    public void UpdateTaskStatus(int taskId, bool isCompleted)
+    {
+        Task taskToUpdate = tasks.FirstOrDefault(t => t.Id == taskId);
+
+        if (taskToUpdate != null)
+        {
+            taskToUpdate.IsCompleted = isCompleted;
+        }
+    }
+}
+```
+
+Quebrando a boa prática:
+```csharp
+public class TDL
+{
+    private List<T> ts = new List<T>();
+
+    public void AT(string tN, string tD)
+    {
+        T nT = new T { 
+                        N = tN, 
+                        D = tD, 
+                        IC = false 
+                     };
+        ts.Add(nT);
+    }
+
+    public void RT(int tI)
+    {
+        T tR = ts.FirstOrDefault(t => t.I == tI);
+        if (tR != null)
+        {
+            ts.Remove(tR);
+        }
+    }
+
+    public void UTS(int tI, bool iC)
+    {
+        T tU = ts.FirstOrDefault(t => t.I == tI);
+        if (tU != null)
+        {
+            tU.IC = iC;
+        }
+    }
+}
+```
+
+No exemplo acima, o código foi escrito indo contra a boa prática, que foca na clareza e legibilidade. Aqui estão os tópicos sobre o que deveria ser feito para atender essas recomendações:
+
+**Renomear a classe**: A classe `TDL` é uma abreviação ilegível, tornando difícil entender seu propósito. A classe deveria ser renomeada para `TodoList` para melhorar a legibilidade.
+
+**Renomear os métodos**: Os nomes dos métodos `AT`, `RT` e `UT` são abreviações ilegíveis, tornando difícil entender o propósito de cada componente. Eles deveriam ser renomeados para `AddTask`, `RemoveTask` e `UpdateTask`, respectivamente.
+
+**Usar nomes de variáveis mais descritivos**: As variáveis `t`, `ot` e `nt` nos métodos são abreviações que dificultam o entendimento do propósito de cada variável. As variáveis deveriam ser renomeadas para nomes mais descritivos, como `task`, `oldTask` e `newTask`.
 
 ## 3. Funções e Métodos
 
